@@ -6,6 +6,7 @@ import com.courtsearch.courtsearchspringbackend.model.KeyModel;
 import com.courtsearch.courtsearchspringbackend.repository.KeyRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class KeyController {
         this.keyRepository = keyRepository;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/keys")
     public List<KeyModel> getKey(@RequestParam String type) {
         return keyRepository.findByKeyType(type);
