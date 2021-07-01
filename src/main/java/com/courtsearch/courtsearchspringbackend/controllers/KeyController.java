@@ -14,16 +14,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Rest controller for interacting with keys collection in MongoDB
+ * @author Eli Mills
+ */
 @RestController
 public class KeyController {
     
     private final KeyRepository keyRepository;
 
+    /**
+     * Constructor
+     * @param keyRepository The repository used for accessing keys data
+     */
     @Autowired
     public KeyController(KeyRepository keyRepository) {
         this.keyRepository = keyRepository;
     }
 
+    /**
+     * Takes GET requests to retrieve all keys within a given type in keys collection
+     * @param type The type of key, e.g. "mapbox"
+     * @return ResponseEntity with response body and status
+     */
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/keys")
     public ResponseEntity<List<KeyModel>> getKey(@RequestParam String type) {

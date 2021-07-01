@@ -7,6 +7,10 @@ import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+/**
+ * MongoDB document model to represent a court on the map
+ * @author Eli Mills
+ */
 @Document(collection = "courts")
 public class CourtModel {
 
@@ -19,8 +23,16 @@ public class CourtModel {
     @Field
     private GeoJsonPoint location;
 
+    /**
+     * Default constructor
+     */
     public CourtModel() {}
 
+    /**
+     * Constructor for court on the map
+     * @param address The address of the court
+     * @param location GeoJsonPoint object which includes coordinates of the court
+     */
     public CourtModel(String address, GeoJsonPoint location) {
         this.address = address;
         this.location = location;
@@ -42,6 +54,9 @@ public class CourtModel {
         this.location = location;
     }
 
+    /**
+     * String format is: Court[id, address, location]
+     */
     @Override
     public String toString() {
         List<Double> coords = location.getCoordinates();

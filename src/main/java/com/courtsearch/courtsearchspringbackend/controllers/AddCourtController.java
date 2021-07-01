@@ -15,16 +15,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Rest controller for interacting with add_courts collection in MongoDB
+ * @author Eli Mills
+ */
 @RestController
 public class AddCourtController {
     
     private final AddCourtRepository addCourtRepository;
 
+    /**
+     * Constructor
+     * @param addCourtRepository The repository used for accessing add_courts data
+     */
     @Autowired
     public AddCourtController(AddCourtRepository addCourtRepository) {
         this.addCourtRepository = addCourtRepository;
     }
 
+    /**
+     * Takes GET requests to retrieve all documents in add_courts collection
+     * @return ResponseEntity with response body and status
+     */
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/add_courts")
     public ResponseEntity<List<AddCourtModel>> getNewCourts() {
@@ -43,6 +55,11 @@ public class AddCourtController {
         }
     }
 
+    /**
+     * Takes POST requests to add a new document to the add_courts collection, typically after user submits front end form
+     * @param newCourt The document that will be created in add_courts
+     * @return ResponseEntity with response body and status
+     */
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/add_courts")
     public ResponseEntity<AddCourtModel> createNewCourt(@RequestBody AddCourtModel newCourt) {

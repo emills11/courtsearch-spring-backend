@@ -13,16 +13,28 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Rest controller for interacting with courts collection in MongoDB
+ * @author Eli Mills
+ */
 @RestController
 public class CourtController {
 
     private final CourtRepository courtRepository;
 
+    /**
+     * Constructor
+     * @param courtRepository The repository used for accessing courts data
+     */
     @Autowired
     public CourtController(CourtRepository courtRepository) {
         this.courtRepository = courtRepository;
     }
 
+    /**
+     * Takes GET requests to retrieve all documents in courts collection
+     * @return ResponseEntity with response body and status
+     */
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/courts")
     public ResponseEntity<List<CourtModel>> getCourts() {
