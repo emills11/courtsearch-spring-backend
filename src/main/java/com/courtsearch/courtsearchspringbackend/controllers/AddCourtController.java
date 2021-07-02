@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Rest controller for interacting with add_courts collection in MongoDB
  * @author Eli Mills
  */
+@CrossOrigin
 @RestController
 public class AddCourtController {
     
@@ -37,7 +38,6 @@ public class AddCourtController {
      * Takes GET requests to retrieve all documents in add_courts collection
      * @return ResponseEntity with response body and status
      */
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/add_courts")
     public ResponseEntity<List<AddCourtModel>> getNewCourts() {
         try {
@@ -60,7 +60,6 @@ public class AddCourtController {
      * @param newCourt The document that will be created in add_courts
      * @return ResponseEntity with response body and status
      */
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/add_courts")
     public ResponseEntity<AddCourtModel> createNewCourt(@RequestBody AddCourtModel newCourt) {
         try {

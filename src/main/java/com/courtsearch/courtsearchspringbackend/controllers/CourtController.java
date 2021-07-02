@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Rest controller for interacting with courts collection in MongoDB
  * @author Eli Mills
  */
+@CrossOrigin
 @RestController
 public class CourtController {
 
@@ -35,7 +36,6 @@ public class CourtController {
      * Takes GET requests to retrieve all documents in courts collection
      * @return ResponseEntity with response body and status
      */
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/courts")
     public ResponseEntity<List<CourtModel>> getCourts() {
         try {

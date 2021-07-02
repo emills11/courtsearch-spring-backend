@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Rest controller for interacting with keys collection in MongoDB
  * @author Eli Mills
  */
+@CrossOrigin
 @RestController
 public class KeyController {
     
@@ -37,7 +38,6 @@ public class KeyController {
      * @param type The type of key, e.g. "mapbox"
      * @return ResponseEntity with response body and status
      */
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/keys")
     public ResponseEntity<List<KeyModel>> getKey(@RequestParam String type) {
         try {
