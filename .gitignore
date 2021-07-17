@@ -34,3 +34,6 @@ build/
 
 src/main/resources/application.properties
 courtsearch-ec2-key.pem
+frontend
+node
+package-lock.json
